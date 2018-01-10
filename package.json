@@ -1,0 +1,27 @@
+{
+  "name": "hangmanpackage",
+  "version": "1.0.0",
+  "description": "This assignment will be a hangman game done with node in the terminal window. The program will select a word randomly, and the user will have a set amount of attempts to guess the word.",
+  "main": "hangman.js",
+  "scripts": {
+    "test": "test-this"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GFigarella/Hangman_with_node.git"
+  },
+  "keywords": [
+    "hangman_game",
+    "game",
+    "hangman"
+  ],
+  "author": "Gabriel Figarella",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GFigarella/Hangman_with_node/issues"
+  },
+  "homepage": "https://github.com/GFigarella/Hangman_with_node#readme",
+  "dependencies": {
+    "inquirer": "^5.0.0"
+  }
+}
