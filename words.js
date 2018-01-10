@@ -10,7 +10,9 @@ function pickWord(){
     this.wordToGuess = [];
 }
 
+// loop that pushes _ to the letter array based on the word selected
 
+// TO THINK OVER -> whether or not to run the loop that generates _s in hangman.js OR in words.js
 var test = new pickWord();
 for (var i = 0; i<test.word.length; i++){
     if (test.word.charAt(i)==" "){
