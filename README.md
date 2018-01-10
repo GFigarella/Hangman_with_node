@@ -1,6 +1,6 @@
-# Hangman_with_node 
+# Hangman_with_node :smile:
 
-This assignment will make a hangman game using node.js and applying the concept of constructors.
+This assignment will make a hangman game using node.js and applying the concept of constructors. 
 
 ### How the game works
 
