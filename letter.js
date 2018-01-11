@@ -40,7 +40,7 @@ function compareWord(count, word, wordToGuess, guessLeft, correctLetter, display
     //new addition ends here
     
     //this if checks if the count is 1. This way, the program knows when the user has guessed the entire word.
-    if (count == 1){
+    if (count == 0){
         console.log("SWEET, YOU WON! GOOD JOB!");
     }
     //if count is not 1 yet, then the user keeps going
@@ -81,6 +81,7 @@ function compareWord(count, word, wordToGuess, guessLeft, correctLetter, display
                                 if (letter == wordLower.charAt(i)){
                                     //using word.charAt(i) so that the final display shows uppercases where they belong. Housekeeping stuff.
                                     wordToGuess[i] = word.charAt(i);
+                                    count--;
                                 }
                             }
                             console.log("GOOD GUESS, KEEP IT UP!");
@@ -88,7 +89,7 @@ function compareWord(count, word, wordToGuess, guessLeft, correctLetter, display
                             console.log("Letters guessed so far: " + correctLetter);
                             display = wordToGuess.join(" ");
                             //decrease count here to keep track of how many letters-to-guess are left
-                            count--;
+                            console.log(count);
                             console.log(display);
                             compareWord(count, word, wordToGuess, guessLeft, correctLetter, display);
                         } //else ends here

@@ -1,14 +1,22 @@
-// var pickWord = require("./words.js");
+var pickWord = require("./words.js");
 var letter = require("./letter.js");
 // var inquirer = require('inquirer');
 
-// //using variable count to keep track of how many letters-to-guess are left
+//variables needed for words.js
+var myWords = ["How to train your dragon", "Eternal Sunshine Of The Spotless Mind", "The Matrix", "The Godfather", "Gone With The Wind"]; 
+var randNum = Math.floor((Math.random()*myWords.length))
+
+var chosenWord = new pickWord(myWords, randNum)
+
+// these variables are initialized for letter.js
+//using variable count to keep track of how many letters-to-guess are left
 var count = 0;
-var word = "We The Kings"
+var word = chosenWord.word;
 var wordToGuess = [];
 var guessLeft = 5;
 var correctLetter=[];
 
+// loop that generates _s for the chosen word
 for (var i = 0; i<word.length; i++){
     if (word.charAt(i)==" "){
         wordToGuess.push(" ");
