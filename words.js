@@ -4,30 +4,33 @@
 // the constructor will have an object of words and will randomly pick one 
 function pickWord(){
     //object with words
-    var myWords = ["How to train your dragon", "Eternal Sunshine Of The Spotless Mind", "The Matrix", "The Godfather", "Gone With The Wind"];
+    this.wordBank = ["How to train your dragon", "Eternal Sunshine Of The Spotless Mind", "The Matrix", "The Godfather", "Gone With The Wind"];
+    var myWords = ["How to train your dragon", "Eternal Sunshine Of The Spotless Mind", "The Matrix", "The Godfather", "Gone With The Wind"]; 
     var randNum = Math.floor((Math.random()*myWords.length))
     this.word = myWords[randNum];
     this.wordToGuess = [];
-}
+    this.underscores = function(){
+        // loop that pushes _ to the letter array based on the word selected
+        for (var i = 0; i<chosenWord.word.length; i++){
+            if (chosenWord.word.charAt(i)==" "){
+                chosenWord.wordToGuess.push(" ");
+            }
+            else{
+                chosenWord.wordToGuess.push("_");
+                //increasing count here to know the total # of letters that need to be guessed
+                // count++;
+            }
+        } //for loop ends here
+        console.log(chosenWord.wordToGuess.join(" "));
+    } // underscores method ends here
+} // pickWord ends here
 
-// loop that pushes _ to the letter array based on the word selected
+var chosenWord = new pickWord();
+var word = chosenWord.word;
+var array = chosenWord.wordToGuess;
+chosenWord.underscores();
 
-// TO THINK OVER -> whether or not to run the loop that generates _s in hangman.js OR in words.js
-var test = new pickWord();
-for (var i = 0; i<test.word.length; i++){
-    if (test.word.charAt(i)==" "){
-        test.wordToGuess.push(" ");
-    }
-    else{
-        test.wordToGuess.push("_");
-    }
-}
 
-console.log(test.word.length);
-// console.log(test.wordToGuess);
-console.log(test.wordToGuess.join(" "));
-// module.exports = pickWord;
-// var test = "e";
-// var test2 = "E";
 
-// console.log(test == test2.toLowerCase());
+
+module.exports = pickWord;
