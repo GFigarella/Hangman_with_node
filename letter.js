@@ -2,34 +2,9 @@
 // var word = require ("./words.js");
 var inquirer = require('inquirer');
 
-// var word = "We The Kings"
-// var guessLeft = 5;
-// var wordToGuess = [];
-// var correctLetter=[];
-// // //using variable count to keep track of how many letters-to-guess are left
-// var count = 0;
-
-
-// for (var i = 0; i<word.length; i++){
-//     if (word.charAt(i)==" "){
-//         wordToGuess.push(" ");
-//     }
-//     else{
-//         wordToGuess.push("_");
-//         //increasing count here to know the total # of letters that need to be guessed
-//         count++;
-//     }
-// }
-
-// var display = wordToGuess.join(" ");
-// console.log(word);
-// console.log(count);
-// console.log(display);
-// console.log(wordToGuess);
-
 var inquirer = require('inquirer');
 // letter.js will hold the logic that will compare the user input to the chosen word
-function compareWord(count, word, wordToGuess, guessLeft, correctLetter, display){
+function compareWord(count, word, wordToGuess, guessLeft, correctLetter, display, restart){
     // new addition
     this.count = count;
     this.word = word;
@@ -37,11 +12,13 @@ function compareWord(count, word, wordToGuess, guessLeft, correctLetter, display
     this.guessLeft = guessLeft;
     this.correctLetter = correctLetter;
     this.display = display;
+    this.restart = restart;
     //new addition ends here
     
     //this if checks if the count is 1. This way, the program knows when the user has guessed the entire word.
     if (count == 0){
         console.log("SWEET, YOU WON! GOOD JOB!");
+        restart();
     }
     //if count is not 1 yet, then the user keeps going
     else{
@@ -59,6 +36,7 @@ function compareWord(count, word, wordToGuess, guessLeft, correctLetter, display
                     //case when user runs out of guesses left
                     case 1:
                         console.log("NO MORE ATTEMPTS, YOU LOST!");
+                        restart();
                     break;
 
                     //user still has attempts left
@@ -66,14 +44,14 @@ function compareWord(count, word, wordToGuess, guessLeft, correctLetter, display
                         if (correctLetter.indexOf(letter)!= -1){
                             console.log("You already guessed that letter, try another one!");
                             console.log(display);
-                            compareWord(count, word, wordToGuess, guessLeft, correctLetter, display);
+                            compareWord(count, word, wordToGuess, guessLeft, correctLetter, display,restart);
                         }
                         //checks to see if the input is in the chosen word. -1 means it's not
                         else if (wordLower.indexOf(letter) == -1){
                             console.log(display);
                             guessLeft--;
                             console.log("INCORRECT! " + guessLeft + " guess(es) remaining");
-                            compareWord(count, word, wordToGuess, guessLeft, correctLetter, display);
+                            compareWord(count, word, wordToGuess, guessLeft, correctLetter, display,restart);
                         }
                         //code for when the guessed letter is correct
                         else{
@@ -91,7 +69,7 @@ function compareWord(count, word, wordToGuess, guessLeft, correctLetter, display
                             //decrease count here to keep track of how many letters-to-guess are left
                             console.log(count);
                             console.log(display);
-                            compareWord(count, word, wordToGuess, guessLeft, correctLetter, display);
+                            compareWord(count, word, wordToGuess, guessLeft, correctLetter, display,restart);
                         } //else ends here
                     break; //switch ends here
                 }
