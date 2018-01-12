@@ -16,4 +16,5 @@ This assignment will make a hangman game using node.js and applying the concept 
 
 ### Playing the game
 
-- insert gif here -
+
+![alt text](./Hangman-node.gif "Logo Title Text 1")
