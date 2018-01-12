@@ -1,15 +1,15 @@
 var pickWord = require("./words.js");
 var letter = require("./letter.js");
 var inquirer = require('inquirer');
+var colors = require("colors");
 
 
 function playGame(){
     var restart = function() {
-        console.log("test");
         inquirer.prompt([
             {
                 name: "replay",
-                message: "Game has finished! Want to play again? Y/N: "
+                message: "Game has finished! Want to play again? Y/N: ".bgWhite.black
             }]).then(function(answers) {
                 if (answers.replay == "yes" || answers.replay == "Y" || answers.replay == "Yes" || answers.replay == "y"){
                     playGame();
@@ -19,9 +19,9 @@ function playGame(){
                 }
             }); //promise ends here
     } // restart ends here
-    console.log(restart);
+
     //variables needed for words.js
-    var myWords = ["How to train your dragon", "Eternal Sunshine Of The Spotless Mind", "The Matrix", "The Godfather", "Gone With The Wind"]; 
+    var myWords = ["How to train your dragon", "Eternal Sunshine Of The Spotless Mind", "The Matrix", "The Godfather", "Gone With The Wind", "The Shape of Water", "The Departed", "Despicable Me", "Casablanca", "Citizen Kane", "Sunshine", "The Sound of Music","The Interpreter", "Arrival"]; 
     var randNum = Math.floor((Math.random()*myWords.length))
 
     var chosenWord = new pickWord(myWords, randNum)
@@ -47,13 +47,13 @@ function playGame(){
     }
 
     var display = wordToGuess.join(" ");
-    console.log(word);
-    console.log(count);
+    console.log('\n' + word);
+    console.log("-----------------------------");
     console.log(display);
+    console.log("-----------------------------\n");
 
     var userHangman = new letter(count, word, wordToGuess, guessLeft, correctLetter, display, restart);
     userHangman
 };
-
 
 playGame();
